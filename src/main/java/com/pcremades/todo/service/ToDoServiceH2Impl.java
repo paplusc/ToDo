@@ -28,13 +28,13 @@ public class ToDoServiceH2Impl implements ToDoService {
   }
 
   @Override
-  public ToDo create(ToDo item) {
+  public ToDo create(final ToDo item) {
     final ToDoEntity response = repository.save(ToDoEntity.fromToDo(item));
     return ToDo.fromEntity(response);
   }
 
   @Override
-  public void delete(Integer id) {
+  public void delete(final Integer id) {
     try {
       repository.deleteById(id);
     } catch (EmptyResultDataAccessException e) {
@@ -51,7 +51,7 @@ public class ToDoServiceH2Impl implements ToDoService {
   }
 
   @Override
-  public Collection<ToDo> getByStatus(boolean isCompleted) {
+  public Collection<ToDo> getByStatus(final boolean isCompleted) {
     final Collection<ToDoEntity> toDoEntityList = repository.findByStatus(isCompleted);
     return toDoEntityList.stream()
                .map(ToDo::fromEntity)
@@ -59,7 +59,7 @@ public class ToDoServiceH2Impl implements ToDoService {
   }
 
   @Override
-  public Collection<ToDo> getByUserId(int userId) {
+  public Collection<ToDo> getByUserId(final int userId) {
     if (userId <= 0) {
       throw new ToDoException(ToDoEntity.class, "userId", String.valueOf(userId));
     }

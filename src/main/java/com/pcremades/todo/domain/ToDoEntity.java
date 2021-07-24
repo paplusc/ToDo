@@ -34,35 +34,19 @@ public class ToDoEntity {
     return new ToDoEntity(toDo.id(), toDo.userId(), toDo.title(), toDo.completed());
   }
 
-  public Integer getId() {
+  public Integer id() {
     return id;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public Integer getUserId() {
+  public Integer userId() {
     return userId;
   }
 
-  public void setUserId(Integer userId) {
-    this.userId = userId;
-  }
-
-  public String getTitle() {
+  public String title() {
     return title;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public Boolean getCompleted() {
+  public Boolean completed() {
     return completed;
-  }
-
-  public void setCompleted(Boolean completed) {
-    this.completed = completed;
   }
 }

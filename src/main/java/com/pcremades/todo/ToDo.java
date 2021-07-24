@@ -1,5 +1,7 @@
 package com.pcremades.todo;
 
+import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -28,7 +30,7 @@ public class ToDo {
   }
 
   public static ToDo fromEntity(ToDoEntity entity) {
-    return new ToDo(entity.getId(), entity.getUserId(), entity.getTitle(), entity.getCompleted());
+    return new ToDo(entity.id(), entity.userId(), entity.title(), entity.completed());
   }
 
   @JsonGetter("id")
@@ -49,6 +51,28 @@ public class ToDo {
   @JsonGetter("completed")
   public Boolean completed() {
     return completed;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof ToDo)) return false;
+
+    ToDo toDo = (ToDo) o;
+
+    if (!Objects.equals(id, toDo.id)) return false;
+    if (!userId.equals(toDo.userId)) return false;
+    if (!title.equals(toDo.title)) return false;
+    return completed.equals(toDo.completed);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id != null ? id.hashCode() : 0;
+    result = 31 * result + userId.hashCode();
+    result = 31 * result + title.hashCode();
+    result = 31 * result + completed.hashCode();
+    return result;
   }
 
   @Override
