@@ -60,6 +60,9 @@ public class ToDoServiceH2Impl implements ToDoService {
 
   @Override
   public Collection<ToDo> getByUserId(int userId) {
+    if (userId <= 0) {
+      throw new ToDoException(ToDoEntity.class, "userId", String.valueOf(userId));
+    }
     final Collection<ToDoEntity> toDoEntityList = repository.findAllByUserId(userId);
     return toDoEntityList.stream()
                .map(ToDo::fromEntity)
@@ -74,7 +77,7 @@ public class ToDoServiceH2Impl implements ToDoService {
   }
 
   @Override
-  public Collection<String> getTitles() {
+  public List<String> getTitles() {
     return repository.findAllTitles().stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
   }
 }

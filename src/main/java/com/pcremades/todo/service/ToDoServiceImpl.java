@@ -99,7 +99,7 @@ public class ToDoServiceImpl implements ToDoService {
   }
 
   @Override
-  public Collection<String> getTitles() {
+  public List<String> getTitles() {
     return null;
   }
 }

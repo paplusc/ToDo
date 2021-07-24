@@ -1,6 +1,7 @@
 package com.pcremades.todo.controller;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -28,7 +29,7 @@ public class TodoController {
   }
 
   @PostMapping("/odilo/tests/2")
-  public ToDo createToDo(@RequestBody @Valid ToDo request) {
+  public ToDo createToDo(@RequestBody @Valid final ToDo request) {
     return toDoService.create(request);
   }
 
@@ -48,7 +49,7 @@ public class TodoController {
   }
 
   @GetMapping("/odilo/tests/2/user/{userId}")
-  public Collection<ToDo> listAllToDoByUser(@PathVariable("userId") Integer userId) {
+  public Collection<ToDo> listAllToDoByUser(@PathVariable("userId") final Integer userId) {
     return toDoService.getByUserId(userId);
   }
 
@@ -58,7 +59,7 @@ public class TodoController {
   }
 
   @GetMapping("/odilo/tests/2/titles")
-  public Collection<String> listAllToDoTitles() {
+  public List<String> listAllToDoTitles() {
     return toDoService.getTitles();
   }
 }

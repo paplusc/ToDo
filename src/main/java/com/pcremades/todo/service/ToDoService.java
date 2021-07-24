@@ -1,6 +1,7 @@
 package com.pcremades.todo.service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import com.pcremades.todo.ToDo;
@@ -12,5 +13,5 @@ public interface ToDoService {
   Collection<ToDo> getByStatus(boolean isCompleted);
   Collection<ToDo> getByUserId(int userId);
   Map<Boolean, Long> getStats();
-  Collection<String> getTitles();
+  List<String> getTitles();
 }
