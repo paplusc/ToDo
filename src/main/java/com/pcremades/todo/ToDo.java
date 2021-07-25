@@ -1,6 +1,7 @@
 package com.pcremades.todo;
 
 import java.util.Objects;
+import java.util.Random;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -11,7 +12,7 @@ import com.pcremades.todo.domain.ToDoEntity;
 
 public class ToDo {
 
-  private final Integer id;
+  private Integer id;
   @NotNull
   @Positive
   private final Integer userId;
@@ -36,6 +37,10 @@ public class ToDo {
   @JsonGetter("id")
   public Integer id() {
     return id;
+  }
+
+  public void generateId() {
+    id = new Random().nextInt(9000) + 1000;
   }
 
   @JsonGetter("userId")
