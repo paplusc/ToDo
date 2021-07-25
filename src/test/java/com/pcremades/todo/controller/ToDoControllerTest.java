@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import com.pcremades.todo.ToDo;
-import com.pcremades.todo.ToDoException;
+import com.pcremades.todo.exception.ToDoException;
 import com.pcremades.todo.domain.ToDoEntity;
 import com.pcremades.todo.service.ToDoService;
 import com.pcremades.todo.service.ToDoServiceH2Impl;

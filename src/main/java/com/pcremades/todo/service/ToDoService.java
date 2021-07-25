@@ -8,7 +8,7 @@ import com.pcremades.todo.ToDo;
 
 public interface ToDoService {
   ToDo create(ToDo item);
-  void delete(Integer id);
+  void delete(int id);
   Collection<ToDo> getAll();
   Collection<ToDo> getByStatus(boolean isCompleted);
   Collection<ToDo> getByUserId(int userId);

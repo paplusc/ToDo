@@ -1,4 +1,4 @@
-package com.pcremades.todo.controller;
+package com.pcremades.todo.exception;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -17,22 +17,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.pcremades.todo.ToDoError;
-import com.pcremades.todo.ToDoException;
-
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class ToDoExceptionHandler extends ResponseEntityExceptionHandler {
 
-  /**
-   * Handle MethodArgumentNotValidException. Triggered when an object fails @Valid validation.
-   *
-   * @param ex      the MethodArgumentNotValidException that is thrown when @Valid validation fails
-   * @param headers HttpHeaders
-   * @param status  HttpStatus
-   * @param request WebRequest
-   * @return the ToDoError object
-   */
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(
              MethodArgumentNotValidException ex,
@@ -46,12 +34,6 @@ public class ToDoExceptionHandler extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(new ToDoError(400, "Validation errors", errors), BAD_REQUEST);
   }
 
-  /**
-   * Handles ToDoException. Created to encapsulate errors with more detail than javax.persistence.EntityNotFoundException.
-   *
-   * @param ex the ToDoException
-   * @return the ToDoError object
-   */
   @ExceptionHandler(ToDoException.class)
   protected ResponseEntity<Object> handleEntityNotFound(
              ToDoException ex) {

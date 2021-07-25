@@ -1,11 +1,16 @@
 todo:
-  data: todos.json
+  data:
+    url: todos.json
+
+scheduler:
+  initialDelay: 5000
+  fixedRate: 1000
 
 spring:
   security:
     user:
-      name: admin
-      password: 1234
+      name: odilo
+      password: password
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
@@ -18,6 +23,3 @@ spring:
   h2:
     console:
       enabled: true
-
-server:
-  port: 9095

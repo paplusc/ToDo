@@ -12,12 +12,12 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.pcremades.todo.ToDo;
-import com.pcremades.todo.ToDoException;
+import com.pcremades.todo.exception.ToDoException;
 import com.pcremades.todo.domain.ToDoEntity;
 import com.pcremades.todo.domain.ToDoRepository;
 
 @Service
-@Profile("dev")
+@Profile("!dev")
 public class ToDoServiceH2Impl implements ToDoService {
 
   private final ToDoRepository repository;
@@ -34,11 +34,11 @@ public class ToDoServiceH2Impl implements ToDoService {
   }
 
   @Override
-  public void delete(final Integer id) {
+  public void delete(final int id) {
     try {
       repository.deleteById(id);
     } catch (EmptyResultDataAccessException e) {
-      throw new ToDoException(ToDoEntity.class, "id", id.toString());
+      throw new ToDoException(ToDoEntity.class, "id", String.valueOf(id));
     }
   }
 

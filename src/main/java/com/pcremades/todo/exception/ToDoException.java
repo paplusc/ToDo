@@ -1,4 +1,4 @@
-package com.pcremades.todo;
+package com.pcremades.todo.exception;
 
 import java.util.Map;
 
