@@ -59,11 +59,11 @@ public class DataLoader {
 
   private static List<ToDo> castToListOfToDo(List<?> list) {
     final List<ToDo> toDoList = new ArrayList<>();
-    for (Object x : list) {
-      Integer id = Integer.valueOf(((LinkedHashMap) x).get("id").toString());
-      Integer userId = Integer.valueOf(((LinkedHashMap) x).get("userId").toString());
-      String title = ((LinkedHashMap) x).get("title").toString();
-      Boolean completed = Boolean.valueOf(((LinkedHashMap) x).get("completed").toString());
+    for (Object todo : list) {
+      Integer id = Integer.valueOf(((LinkedHashMap) todo).get("id").toString());
+      Integer userId = Integer.valueOf(((LinkedHashMap) todo).get("userId").toString());
+      String title = ((LinkedHashMap) todo).get("title").toString();
+      Boolean completed = Boolean.valueOf(((LinkedHashMap) todo).get("completed").toString());
       toDoList.add(new ToDo(id, userId, title, completed));
     }
     return toDoList;

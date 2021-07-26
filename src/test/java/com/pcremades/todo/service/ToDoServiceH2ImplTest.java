@@ -8,6 +8,8 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Collection;
@@ -53,7 +55,7 @@ public class ToDoServiceH2ImplTest {
       service.delete(1);
 
       // Assert
-      // No exceptions produced
+      verify(repository, times(1)).deleteById(anyInt());
     }
 
     @Test
