@@ -138,9 +138,9 @@ public class ToDoServiceH2ImplTest {
     // Arrange
     final List<ToDoEntity> completed = List.of(new ToDoEntity(1,123, "first", true),
                new ToDoEntity(2, 123, "second", true));
-    final List<ToDoEntity> uncompleted = List.of(new ToDoEntity(1,123, "third", false),
-               new ToDoEntity(2, 123, "forth", false),
-               new ToDoEntity(3, 123, "fifth", false));
+    final List<ToDoEntity> uncompleted = List.of(new ToDoEntity(3,123, "third", false),
+               new ToDoEntity(4, 123, "forth", false),
+               new ToDoEntity(5, 123, "fifth", false));
     when(repository.findByStatus(true)).thenReturn(completed);
     when(repository.findByStatus(false)).thenReturn(uncompleted);
 
